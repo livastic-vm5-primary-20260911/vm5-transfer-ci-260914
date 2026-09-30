@@ -8,3 +8,32 @@ pull_request_rules:
     actions:
       merge:
         method: squash
+
+merge_queue:
+  max_parallel_checks: 1
+  status_comments: none
+
+queue_rules:
+  - name: vm5-dynamic-priority
+    batch_size:
+      min: 1
+      max: 2
+    checks_timeout: null
+    queue_conditions: []
+    merge_conditions:
+      - check-success = vm5-never-check
+    merge_method: squash
+
+priority_rules:
+  - name: vm5-high
+    conditions:
+      - title = VM5_DYN_HIGH
+    priority: high
+  - name: vm5-medium
+    conditions:
+      - title = VM5_DYN_MEDIUM
+    priority: medium
+  - name: vm5-low
+    conditions:
+      - title = VM5_DYN_LOW
+    priority: low

@@ -8,3 +8,16 @@ pull_request_rules:
     actions:
       merge:
         method: squash
+
+merge_queue:
+  checking_label: vm5-checking
+  status_comments: none
+
+queue_rules:
+  - name: vm5-checking-label-fixture
+    batch_size: 1
+    checks_timeout: null
+    queue_conditions: []
+    merge_conditions:
+      - check-success = vm5-never-check
+    merge_method: squash

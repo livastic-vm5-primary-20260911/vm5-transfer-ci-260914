@@ -29,6 +29,7 @@ priority_rules:
     conditions:
       - title = VM5_DYN_HIGH
     priority: high
+    allow_checks_interruption: true
   - name: vm5-medium
     conditions:
       - title = VM5_DYN_MEDIUM
